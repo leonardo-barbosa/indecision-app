@@ -1,8 +1,16 @@
 {
-  "extends": ["react-app", "plugin:prettier/recommended"],
+  "extends": [
+    "react-app"
+  ],
   "rules": {
-    "prettier/prettier": "error",
-    "react/react-in-jsx-scope": "off"
-  },
-  "plugins": ["prettier"]
+    "react/react-in-jsx-scope": "off",
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      2,
+      "never"
+    ]
+  }
 }

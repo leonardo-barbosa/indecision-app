@@ -1,10 +1,3 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import AddOption from './components/AddOption'
-import Option from './components/Option'
-import Header from './components/Header'
-import Action from './components/Action'
-
 class IndecisionApp extends React.Component {
   constructor(props) {
     super(props)
@@ -86,6 +79,29 @@ class IndecisionApp extends React.Component {
   }
 }
 
+const Header = props => {
+  return (
+    <div>
+      <h1>{props.title}</h1>
+      {props.subtitle && <h2>{props.subtitle}</h2>}
+    </div>
+  )
+}
+
+Header.defaultProps = {
+  title: 'Indecision'
+}
+
+const Action = props => {
+  return (
+    <div>
+      <button onClick={props.handlePick} disabled={!props.hasOptions}>
+        What should I do?
+      </button>
+    </div>
+  )
+}
+
 const Options = props => {
   return (
     <div>
@@ -102,6 +118,56 @@ const Options = props => {
       ))}
     </div>
   )
+}
+
+const Option = props => {
+  return (
+    <div>
+      {props.optionText}
+      <button
+        onClick={e => {
+          props.handleDeleteOption(props.optionText)
+        }}
+      >
+        Remove
+      </button>
+    </div>
+  )
+}
+
+class AddOption extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleAddOption = this.handleAddOption.bind(this)
+    this.state = {
+      error: undefined
+    }
+  }
+
+  handleAddOption(e) {
+    e.preventDefault()
+
+    const option = e.target.elements.option.value.trim()
+    const error = this.props.handleAddOption(option)
+
+    this.setState(() => ({ error }))
+
+    if (!error) {
+      e.target.elements.option.value = ''
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.error && <p>{this.state.error}</p>}
+        <form onSubmit={this.handleAddOption}>
+          <input type="text" name="option" />
+          <button>Add Option</button>
+        </form>
+      </div>
+    )
+  }
 }
 
 // const User = (props) => {
