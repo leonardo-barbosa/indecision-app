@@ -1,2 +1,12 @@
 {
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "standard.enable": false,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false
 }
