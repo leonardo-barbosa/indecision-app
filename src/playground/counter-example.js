@@ -1,27 +1,27 @@
 class Counter extends React.Component {
   constructor(props) {
-    super(props);
-    this.handleAddOne = this.handleAddOne.bind(this);
-    this.handleMinusOne = this.handleMinusOne.bind(this);
-    this.handleReset = this.handleReset.bind(this);
+    super(props)
+    this.handleAddOne = this.handleAddOne.bind(this)
+    this.handleMinusOne = this.handleMinusOne.bind(this)
+    this.handleReset = this.handleReset.bind(this)
     this.state = {
       count: 0
-    };
+    }
   }
 
   componentDidMount() {
-    const stringCount = localStorage.getItem("count");
-    const count = parseInt(stringCount, 10);
+    const stringCount = localStorage.getItem('count')
+    const count = parseInt(stringCount, 10)
 
     if (!isNaN(count)) {
-      this.setState(() => ({ count }));
+      this.setState(() => ({ count }))
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
     try {
       if (prevState.count !== this.state.count) {
-        localStorage.setItem("count", this.state.count);
+        localStorage.setItem('count', this.state.count)
       }
     } catch (e) {
       // Do nothing at all :(
@@ -32,24 +32,24 @@ class Counter extends React.Component {
     this.setState(prevState => {
       return {
         count: prevState.count + 1
-      };
-    });
+      }
+    })
   }
 
   handleMinusOne() {
     this.setState(prevState => {
       return {
         count: prevState.count - 1
-      };
-    });
+      }
+    })
   }
 
   handleReset() {
     this.setState(() => {
       return {
         count: 0
-      };
-    });
+      }
+    })
   }
 
   render() {
@@ -60,11 +60,11 @@ class Counter extends React.Component {
         <button onClick={this.handleMinusOne}>-1</button>
         <button onClick={this.handleReset}>reset</button>
       </div>
-    );
+    )
   }
 }
 
-ReactDOM.render(<Counter />, document.getElementById("app"));
+ReactDOM.render(<Counter />, document.getElementById('app'))
 
 // let count = 0
 // const addOne = () => {

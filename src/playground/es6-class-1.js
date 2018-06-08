@@ -1,26 +1,25 @@
-
 class Person {
-  constructor (name = 'Anonymous', age = 0) {
+  constructor(name = 'Anonymous', age = 0) {
     this.name = name
     this.age = age
   }
-  getGreeting () {
+  getGreeting() {
     return `Hi, I am ${this.name}!`
   }
-  getDescription () {
+  getDescription() {
     return `${this.name} is ${this.age} years(s) old.`
   }
 }
 
 class Student extends Person {
-  constructor (name, age, major) {
+  constructor(name, age, major) {
     super(name, age)
     this.major = major
   }
-  hasMajor () {
+  hasMajor() {
     return !!this.major
   }
-  getDescription () {
+  getDescription() {
     let description = super.getDescription()
 
     if (this.hasMajor()) {
@@ -32,14 +31,14 @@ class Student extends Person {
 }
 
 class Traveler extends Person {
-  constructor (name, age, homeLocation) {
+  constructor(name, age, homeLocation) {
     super(name, age)
     this.homeLocation = homeLocation
   }
-  hasHomeLocation () {
+  hasHomeLocation() {
     return !!this.homeLocation
   }
-  getGreeting () {
+  getGreeting() {
     let greeting = super.getGreeting()
 
     if (this.hasHomeLocation()) {
